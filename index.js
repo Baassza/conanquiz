@@ -8,9 +8,10 @@ var myInterval = undefined
 $(document).ready(async function () {
     if (localStorage.getItem('level') === null) {
         await load()
-        localStorage.setItem('level', JSON.stringify(level))
-        localStorage.setItem('img', JSON.stringify(img))
-        localStorage.setItem('ch', JSON.stringify(level))
+        await localStorage.setItem('level', JSON.stringify(level))
+        await localStorage.setItem('img', JSON.stringify(img))
+        await localStorage.setItem('ch', JSON.stringify(level))
+        location.reload()
     }
     else {
         level = JSON.parse(localStorage.getItem('level'))
@@ -39,7 +40,7 @@ $(document).ready(async function () {
             }
         })
     } else {
-        game()
+        await game()
     }
 
 })
