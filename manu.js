@@ -18,7 +18,6 @@ $("#play").on('press', function(e) {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           localStorage.clear()
-          window.location = "game.html"
         } 
       })
   });
