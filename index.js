@@ -1,5 +1,6 @@
 let level = []
 let img = []
+let ch = []
 let ans = 0
 let idx = 0
 var myInterval = undefined
@@ -9,10 +10,12 @@ $(document).ready(async function () {
         await load()
         localStorage.setItem('level', JSON.stringify(level))
         localStorage.setItem('img', JSON.stringify(img))
+        localStorage.setItem('ch', JSON.stringify(level))
     }
     else {
         level = JSON.parse(localStorage.getItem('level'))
         img = JSON.parse(localStorage.getItem('img'))
+        ch = JSON.parse(localStorage.getItem('ch'))
     }
     if (level.length <= 0) {
         $('.main').hide()
@@ -64,9 +67,12 @@ function game() {
     $('#choice' + index_ch).text(level_name)
     for (let i = 1; i <= 4; i++) {
         if (i != index_ch) {
-            let index_ch2 = Math.floor(Math.random() * level.length)
-            let level_name2 = level[index_ch2]
-            $('#choice' + i).text(level_name2)
+            let ch_name = level_name
+            while (ch_name == level_name) {
+                let index_ch2 = Math.floor(Math.random() * ch.length)
+                ch_name = ch[index_ch2]
+            }
+            $('#choice' + i).text(ch_name)
         }
     }
     myInterval = setInterval(function () {
