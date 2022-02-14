@@ -11,12 +11,11 @@ $(document).ready(async function () {
         await localStorage.setItem('level', JSON.stringify(level))
         await localStorage.setItem('img', JSON.stringify(img))
         await localStorage.setItem('ch', JSON.stringify(level))
-        location.reload()
     }
     else {
-        level = JSON.parse(localStorage.getItem('level'))
-        img = JSON.parse(localStorage.getItem('img'))
-        ch = JSON.parse(localStorage.getItem('ch'))
+        level = await JSON.parse(localStorage.getItem('level'))
+        img = await JSON.parse(localStorage.getItem('img'))
+        ch = await JSON.parse(localStorage.getItem('ch'))
     }
     if (level.length <= 0) {
         $('.main').hide()
@@ -36,7 +35,7 @@ $(document).ready(async function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 localStorage.clear()
-                location.reload()
+                window.location = './index.html'
             }
         })
     } else {
